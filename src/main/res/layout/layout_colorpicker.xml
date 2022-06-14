@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ /*
+  ~  * Copyright (c) 2022 SuMuCheng
+  ~  *
+  ~  * CN:
+  ~  * 作者：SuMuCheng
+  ~  * Github 主页：https://github.com/CaiMuCheng
+  ~  *
+  ~  * 你可以免费使用、商用以下代码，也可以基于以下代码做出修改，但是必须在你的项目中标注出处
+  ~  * 例如：在你 APP 的设置中添加 “关于编辑器” 一栏，其中标注作者以及此编辑器的 Github 主页
+  ~  *
+  ~  * 此代码使用 MPL 2.0 开源许可证，你必须标注作者信息
+  ~  * 若你要修改文件，请勿删除此注释
+  ~  * 若你违反以上条例我们有权向您提起诉讼!
+  ~  *
+  ~  * EN:
+  ~  * Author: SuMuCheng
+  ~  * Github Homepage: https://github.com/CaiMuCheng
+  ~  *
+  ~  * You can use the following code for free, commercial use, or make modifications based on the following code, but you must mark the source in your project.
+  ~  * For example: add an "About Editor" column in your app's settings, which identifies the author and the Github home page of this editor.
+  ~  *
+  ~  * This code uses the MPL 2.0 open source license, you must mark the author information
+  ~  * Do not delete this comment if you want to modify the file.
+  ~  *
+  ~  * If you violate the above regulations we have the right to sue you!
+  ~  */
+  -->
+
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF1e1e1e"
+    android:orientation="vertical">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="颜色选择器"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RGB: "
+            android:textColor="#FFFFFFFF"
+            android:textSize="18sp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rgb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="255,0,0"
+            android:textColor="#FF497CE3"
+            android:textSize="18sp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HEX: "
+            android:textColor="#FFFFFFFF"
+            android:textSize="18sp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="#FFFF0000"
+            android:textColor="#FF497CE3"
+            android:textSize="18sp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/ok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:backgroundTint="#1e1e1e"
+            android:text="确定"
+            android:textColor="#FFFFFFFF"
+            android:textSize="16sp"
+            app:cornerRadius="0dp"
+            app:strokeColor="#f5f5f7"
+            app:strokeWidth="1dp" />
+
+    </FrameLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
