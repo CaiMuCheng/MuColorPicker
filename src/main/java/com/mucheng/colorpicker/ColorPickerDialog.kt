@@ -69,6 +69,10 @@ open class ColorPickerDialog(context: Context, style: Int = 0) : AlertDialog(con
         return this
     }
 
+    private lateinit var argb: MaterialTextView
+
+    private lateinit var hsv: MaterialTextView
+
     private lateinit var colorTextView: MaterialTextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,19 +89,22 @@ open class ColorPickerDialog(context: Context, style: Int = 0) : AlertDialog(con
         val width = (displayMetrics.widthPixels * 0.5).toInt()
         val height = (displayMetrics.widthPixels * 0.5).toInt()
 
+        argb = findViewById(R.id.argb)!!
+        hsv = findViewById(R.id.hsv)!!
         colorTextView = findViewById(R.id.color)!!
-        val rgb = findViewById<MaterialTextView>(R.id.rgb)!!
 
         val colorPickerView = ColorPickerView(context, width, height)
         colorPickerView.setOnColorChangedListener(object : OnColorChangedListener {
 
             @SuppressLint("SetTextI18n")
             override fun onColorChanged(color: Int) {
-                val hexString = Integer.toHexString(color)
+                val hexString = Integer.toHexString(color).uppercase(Locale.getDefault())
                 colorTextView.text = "#$hexString"
 
-                val array = toRGB(color)
-                rgb.text = array.joinToString()
+                val array = toARGB(color)
+                argb.text = array.joinToString()
+
+                hsv.text = toHsvColors(color).joinToString()
             }
 
         })
@@ -105,22 +112,61 @@ open class ColorPickerDialog(context: Context, style: Int = 0) : AlertDialog(con
 
         val button = findViewById<MaterialButton>(R.id.ok)!!
         button.setOnClickListener(this)
+        argb.setOnClickListener(this)
+        hsv.setOnClickListener(this)
+        colorTextView.setOnClickListener(this)
     }
 
-    open fun toRGB(color: Int): IntArray {
+    open fun toARGB(color: Int): IntArray {
+        val alpha = Color.alpha(color)
         val red = Color.red(color)
         val green = Color.green(color)
         val blue = Color.blue(color)
-        return intArrayOf(red, green, blue)
+        return intArrayOf(alpha, red, green, blue)
     }
 
-    override fun onClick(v: View?) {
-        val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clipData = ClipData.newPlainText(null, colorTextView.text)
-        clipboard.setPrimaryClip(clipData)
+    open fun toHsvColors(color: Int): FloatArray {
+        val hsvColors = FloatArray(3)
+        Color.colorToHSV(color, hsvColors)
+        return hsvColors
+    }
 
-        Toast.makeText(context, "16 进制颜色复制成功", Toast.LENGTH_SHORT).show()
-        dismiss()
+    override fun onClick(v: View) {
+        val clipboard =
+            context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        when (v.id) {
+            R.id.argb -> {
+                val clipData = ClipData.newPlainText(null, argb.text)
+                clipboard.setPrimaryClip(clipData)
+
+                Toast.makeText(context,
+                    "ARGB 颜色复制成功", Toast.LENGTH_SHORT)
+                    .show()
+                dismiss()
+            }
+
+            R.id.hsv -> {
+                val clipData = ClipData.newPlainText(null, hsv.text)
+                clipboard.setPrimaryClip(clipData)
+
+                Toast.makeText(context,
+                    "HSV 颜色复制成功", Toast.LENGTH_SHORT)
+                    .show()
+                dismiss()
+            }
+
+            R.id.color -> {
+                val clipData = ClipData.newPlainText(null, colorTextView.text)
+                clipboard.setPrimaryClip(clipData)
+
+                Toast.makeText(context,
+                    "16 进制颜色复制成功", Toast.LENGTH_SHORT)
+                    .show()
+                dismiss()
+            }
+
+            R.id.ok -> dismiss()
+        }
     }
 
 }

@@ -29,6 +29,7 @@
 
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -59,19 +60,49 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RGB: "
+            android:text="ARGB: "
             android:textColor="#FFFFFFFF"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            tools:ignore="HardcodedText" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/rgb"
+            android:id="@+id/argb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
-            android:text="255,0,0"
+            android:text="255, 0, 0, 255"
             android:textColor="#FF497CE3"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            tools:ignore="HardcodedText" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HSV: "
+            android:textColor="#FFFFFFFF"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/hsv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="0.0, 1.0, 0.0"
+            android:textColor="#FF497CE3"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -87,7 +118,8 @@
             android:layout_height="wrap_content"
             android:text="HEX: "
             android:textColor="#FFFFFFFF"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            tools:ignore="HardcodedText" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/color"
@@ -95,7 +127,8 @@
             android:layout_height="wrap_content"
             android:text="#FFFF0000"
             android:textColor="#FF497CE3"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            tools:ignore="HardcodedText" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -115,7 +148,8 @@
             android:textSize="16sp"
             app:cornerRadius="0dp"
             app:strokeColor="#f5f5f7"
-            app:strokeWidth="1dp" />
+            app:strokeWidth="1dp"
+            tools:ignore="HardcodedText" />
 
     </FrameLayout>
 
